@@ -1,6 +1,10 @@
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
+
+/*
+ * Ken Note: Consider using bit operation to reduce the comparison
+ */
 char** fizzBuzz(int n, int* returnSize) {
     char** returnArray = NULL;
     returnArray = malloc( n * sizeof(char*) );

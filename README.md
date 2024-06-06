@@ -16,7 +16,7 @@ There are six easy problems to start with, which I have organized into a folder 
 |[412](https://leetcode.com/problems/fizz-buzz/)|Fizz Buzz|V|
 |[1342](https://leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/)|Number of Steps to Reduce a Number to Zero|V|
 |[876](https://leetcode.com/problems/middle-of-the-linked-list/)| Middle of The Linked List|V|
-|[383](https://leetcode.com/problems/ransom-note/)|Ransom Note||
+|[383](https://leetcode.com/problems/ransom-note/)|Ransom Note|V|
 
 ## Problems Category
 	Array (数组)

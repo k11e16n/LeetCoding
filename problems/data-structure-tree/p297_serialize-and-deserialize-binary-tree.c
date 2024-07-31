@@ -202,3 +202,61 @@ struct TreeNode* deserialize(char* data) {
 // Your functions will be called as such:
 // char* data = serialize(root);
 // deserialize(data);
+
+/* Smart method from internet */
+
+int nodeCnt(struct TreeNode* ptr)
+{
+    if (ptr == NULL)
+    {
+        return 1;
+    }
+    return (nodeCnt(ptr->left) + nodeCnt(ptr->right) + 1);
+}
+
+void recordTree(struct TreeNode* ptr, int* arr, int* idx)
+{
+    if (ptr != NULL)
+    {
+        arr[(*idx)++] = ptr->val;
+
+        recordTree(ptr->left, arr, idx);
+        recordTree(ptr->right, arr, idx);
+    }
+    else
+    {
+        arr[(*idx)++] = -2000;
+    }
+}
+
+char* serialize(struct TreeNode* root)
+{
+    int cnt = nodeCnt(root);
+    int* arr = (int*)malloc(cnt * sizeof(int));
+    int idx = 0;
+    recordTree(root, arr, &idx);
+    return (char*)arr;
+}
+
+/** Decodes your encoded data to tree. */
+struct TreeNode* buildTree(int* arr, int* idx)
+{
+    struct TreeNode* node;
+    if (arr[(*idx)] == -2000)
+    {
+        (*idx)++;
+        return NULL;
+    }
+    node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    node->val = arr[(*idx)++];
+    node->left = buildTree(arr, idx);
+    node->right = buildTree(arr, idx);
+    return node;
+}
+
+struct TreeNode* deserialize(char* data)
+{
+    int* arr = (int*)data;
+    int idx = 0;
+    return buildTree(arr, &idx);
+}

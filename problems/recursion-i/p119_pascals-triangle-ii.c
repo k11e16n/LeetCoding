@@ -1,6 +1,11 @@
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
+
+#define METHOD 2
+
+/* recursive */
+#if METHOD == 1
 int* getRow(int rowIndex, int* returnSize) {
     
     /* rowIndex equals size of array */
@@ -31,3 +36,22 @@ int* getRow(int rowIndex, int* returnSize) {
     }
     return ret;
 }
+#endif
+
+/* two pointer method */
+#if METHOD == 2
+int* getRow(int rowIndex, int* returnSize) {
+    *returnSize = rowIndex+1;
+    int *ret = malloc( *returnSize * sizeof(int));
+    
+    for (int i = 0; i <= rowIndex; i++) {
+        ret[i] = 1; 
+        /* Node: must be start from back, otherwise the infromation will be lost */
+        for (int j = i - 1; j > 0; j--) {
+            ret[j] = ret[j] + ret[j - 1];
+        }
+    }
+    return ret;
+}
+#endif
+

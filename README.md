@@ -24,6 +24,14 @@ This is mentioned in The "LeetCode Beginner's Guide". It shows something like a 
 [Link](https://leetcode.com/explore/learn/card/the-leetcode-beginners-guide/679/sql-syntax/4358/)  
 ![alt text](./data/ExploreCardTrack.png "Explore Card Track")
 
+| Finished list.|
+|:-------------:|
+|Array101|
+|Linked-list|
+|array-and-string|
+|data-structure-tree(binary tree)|
+|recursion-i|
+
 ## Problems Category
 	Array (数组)
 	linked list (链表)

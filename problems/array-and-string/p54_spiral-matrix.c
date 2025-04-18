@@ -62,3 +62,45 @@ int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSi
     }
     return ret_arr;
 }
+
+
+
+
+/* Recursive method from Internet */
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+
+ /**
+  Refer the solution on the internet. Using dr, dc to know which direction to go
+  dr, dc
+  0   1   -> row fixed, go through all col from left to right
+  1   0   -> go through all raw from top to bottom, col fixed
+  0   -1  -> row fixed, go through all col from right to left
+  -1  0   -> go through all raw from bottom to top, col fixed
+
+  and we use r,c to record current position.
+ */
+void spiral(int **matrix, int m, int n, int **result, int *result_iter, int r, int c, int dr, int dc){
+    if(m == 0 || n == 0)
+        return;
+
+    for(int i = 0; i < n; i++){
+        /* Only go through first line. */
+        r = r + dr;
+        c = c + dc;
+        (*result)[(*result_iter)++] = matrix[r][c];
+    }
+
+    spiral(matrix, n, (m-1), result, result_iter, r, c, dc, -dr);
+}
+
+int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize) {
+
+    *returnSize = matrixSize * matrixColSize[0];
+    int *result_arr = (int *)malloc( *returnSize * sizeof(int));
+    int result_iter = 0;
+
+    spiral( matrix, matrixSize, *matrixColSize, &result_arr, &result_iter, 0, -1, 0, 1);
+    return result_arr;
+}
